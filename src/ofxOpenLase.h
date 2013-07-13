@@ -23,10 +23,13 @@ public:
 	void draw(ofMesh & vertexData);
 	void draw(ofMesh & vertexData, ofPolyRenderMode renderType);
 	void draw(vector<ofPoint> & vertexData, ofPrimitiveMode drawMode);
-	void draw(ofImage & image, float x, float y, float z, float w, float h) {}
-	void draw(ofFloatImage & image, float x, float y, float z, float w, float h) {}
-	void draw(ofShortImage & image, float x, float y, float z, float w, float h) {}
 	
+  void draw(ofMesh & vertexData, bool useColors, bool useTextures, bool useNormals);
+	void draw(ofMesh & vertexData, ofPolyRenderMode renderType, bool useColors, bool useTextures, bool useNormals);
+	void draw(ofImage & image, float x, float y, float z, float w, float h, float sx, float sy, float sw, float sh);
+	void draw(ofFloatImage & image, float x, float y, float z, float w, float h, float sx, float sy, float sw, float sh);
+	void draw(ofShortImage & image, float x, float y, float z, float w, float h, float sx, float sy, float sw, float sh);
+
 	void pushView() {}
 	void popView() {}
 	
@@ -95,7 +98,8 @@ public:
 	void drawCircle(float x, float y, float z, float radius);
 	void drawEllipse(float x, float y, float z, float width, float height);
 	void drawString(string text, float x, float y, float z, ofDrawBitmapMode mode);
-	
+  void drawSphere(float x, float y, float z, float radius);
+
 	// returns true if the renderer can render curves without decomposing them
 	bool rendersPathPrimitives() { return false; }
 	

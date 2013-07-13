@@ -27,14 +27,14 @@ ofxOpenLaseRenderer::ofxOpenLaseRenderer()
 	
 	olSetRenderParams(&params);
 	
-	ofAddListener(ofEvents.draw, this, &ofxOpenLaseRenderer::onDraw);
+	ofAddListener(ofEvents().draw, this, &ofxOpenLaseRenderer::onDraw);
 }
 
 ofxOpenLaseRenderer::~ofxOpenLaseRenderer()
 {
 	try
 	{
-		ofRemoveListener(ofEvents.draw, this, &ofxOpenLaseRenderer::onDraw);
+		ofRemoveListener(ofEvents().draw, this, &ofxOpenLaseRenderer::onDraw);
 	} catch (...) {}
 	
 	olShutdown();
@@ -361,4 +361,34 @@ void ofxOpenLaseDisable()
 {
 	ofSetCurrentRenderer(ofGetGLRenderer());
 	renderer.reset();
+}
+
+void ofxOpenLaseRenderer::draw(ofMesh & vertexData, bool useColors, bool useTextures, bool useNormals)
+{
+	NOT_IMPL;
+}
+
+void ofxOpenLaseRenderer::draw(ofMesh & vertexData, ofPolyRenderMode renderType, bool useColors, bool useTextures, bool useNormals)
+{
+	NOT_IMPL;
+}
+
+void ofxOpenLaseRenderer::draw(ofImage & image, float x, float y, float z, float w, float h, float sx, float sy, float sw, float sh)
+{
+	NOT_IMPL;
+}
+
+void ofxOpenLaseRenderer::draw(ofFloatImage & image, float x, float y, float z, float w, float h, float sx, float sy, float sw, float sh)
+{
+	NOT_IMPL;
+}
+
+void ofxOpenLaseRenderer::draw(ofShortImage & image, float x, float y, float z, float w, float h, float sx, float sy, float sw, float sh)
+{
+	NOT_IMPL;
+}
+
+void ofxOpenLaseRenderer::drawSphere(float x, float y, float z, float radius)
+{
+	NOT_IMPL;
 }

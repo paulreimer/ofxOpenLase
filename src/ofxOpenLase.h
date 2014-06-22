@@ -14,7 +14,7 @@ public:
   ofxOpenLaseRenderer();
   ~ofxOpenLaseRenderer();
   
-  string getType() { return "openlase"; };
+  const std::string& getType() { return "openlase"; };
   
   void update();
   
@@ -24,6 +24,9 @@ public:
   void draw(ofMesh & vertexData, ofPolyRenderMode renderType);
   void draw(vector<ofPoint> & vertexData, ofPrimitiveMode drawMode);
   
+  /* virtual */ void draw(of3dPrimitive& model, ofPolyRenderMode renderType) {}
+  /* virtual */ void setDepthTest(bool depthTest) {}
+
   void draw(ofMesh & vertexData, bool useColors, bool useTextures, bool useNormals);
   void draw(ofMesh & vertexData, ofPolyRenderMode renderType, bool useColors, bool useTextures, bool useNormals);
   void draw(ofImage & image, float x, float y, float z, float w, float h, float sx, float sy, float sw, float sh);

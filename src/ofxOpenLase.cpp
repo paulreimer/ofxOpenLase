@@ -334,35 +334,6 @@ void ofxOpenLaseRenderer::setColor(const ofColor & color)
   currentFloatColor /= 255.;
 }
 
-#pragma mark -
-
-void ofxOpenLaseRenderer::onDraw(ofEventArgs&)
-{
-  float ftime = olRenderFrame(60);
-}
-
-#pragma mark -
-
-void ofxOpenLaseEnable()
-{
-  if (!rendererCollection)
-  {
-    renderer = ofPtr<ofxOpenLaseRenderer>(new ofxOpenLaseRenderer);
-    
-    rendererCollection = ofPtr<ofRendererCollection>(new ofRendererCollection);
-    rendererCollection->renderers.push_back(ofGetCurrentRenderer());
-    rendererCollection->renderers.push_back(renderer);
-  }
-  
-  ofSetCurrentRenderer(rendererCollection);
-}
-
-void ofxOpenLaseDisable()
-{
-  ofSetCurrentRenderer(ofGetGLRenderer());
-  renderer.reset();
-}
-
 void ofxOpenLaseRenderer::draw(ofMesh & vertexData, bool useColors, bool useTextures, bool useNormals)
 {
   NOT_IMPL;
@@ -391,4 +362,33 @@ void ofxOpenLaseRenderer::draw(ofShortImage & image, float x, float y, float z, 
 void ofxOpenLaseRenderer::drawSphere(float x, float y, float z, float radius)
 {
   NOT_IMPL;
+}
+
+#pragma mark -
+
+void ofxOpenLaseRenderer::onDraw(ofEventArgs&)
+{
+  float ftime = olRenderFrame(60);
+}
+
+#pragma mark -
+
+void ofxOpenLaseEnable()
+{
+  if (!rendererCollection)
+  {
+    renderer = ofPtr<ofxOpenLaseRenderer>(new ofxOpenLaseRenderer);
+
+    rendererCollection = ofPtr<ofRendererCollection>(new ofRendererCollection);
+    rendererCollection->renderers.push_back(ofGetCurrentRenderer());
+    rendererCollection->renderers.push_back(renderer);
+  }
+
+  ofSetCurrentRenderer(rendererCollection);
+}
+
+void ofxOpenLaseDisable()
+{
+  ofSetCurrentRenderer(ofGetGLRenderer());
+  renderer.reset();
 }
